@@ -20,7 +20,7 @@ def find_jobs():
     soup = BeautifulSoup(html_text.text, 'lxml')
 
     jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
-    for job in jobs:
+    for index,job in enumerate(jobs): #index for literally the index of the job
         published_date = job.find('span', class_='sim-posted').span.text
         if 'few' in published_date:
             company_name = job.find('h3', class_='joblist-comp-name').text.replace(' ', '')
@@ -28,9 +28,10 @@ def find_jobs():
             more_info = job.header.h2.a['href']
 
             if skill_unfamiliar not in skills:
-                print(f"Company name : {company_name.strip()}\nRequired skills : {skills.strip()}")
-                print(f"More info : {more_info}")
-                print('')
+                with open(f'posts/job_{index}.txt', 'w') as f:
+                    f.write(f"Company name : {company_name.strip()}\nRequired skills : {skills.strip()}\n")
+                    f.write(f"More info : {more_info}")
+                print(f"File {index} saved!")
 
 
 if __name__ == '__main__':
