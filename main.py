@@ -1,4 +1,5 @@
 '''
+It only searches for Python jobs for now!
 v1
 This works for Jobs only posted few days back having python as one of the requirement.
 It will scrap the jobs only on the first page of the website.
@@ -78,4 +79,4 @@ if __name__ == '__main__':
         print(f"Waiting {time_wait} minutes...")
         time.sleep(time_wait * 60)'''
     techgig_find_jobs()
-    # times_find_jobs()
+    times_find_jobs()
