@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Review Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+
+  <div class="table-users">
+   <div class="header">Result for job search</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Title</th>
+         <th>Company</th>
+         <th>Experience</th>
+         <th>CTC</th>
+         <th width="230">skills</th>
+         <th>Posted on</th>
+         <th>More details</th>
+      </tr>
+         {% for job in techgig_list %}
+      <tr>
+          <td>{{techgig_list['title']}}</td>
+         <td>{{techgig_list['company']}}</td>
+         <td>{{techgig_list['experience']}}</td>
+         <td>{{techgig_list['ctc']}}</td>
+         <td>{{techgig_list['skills']}} </td>
+         <td>{{techgig_list['posted']}}</td>
+         <td>{{techgig_list['details']}}</td>
+       {% endfor %}
+   </table>
+</div>
+
+
+
+</body>
+
+</html>

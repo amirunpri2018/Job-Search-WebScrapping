@@ -15,38 +15,46 @@ def index():
         location = request.form['location']
         date_posted = int(request.form['dateposted'])
         experience = int(request.form['experience'])
-        print(f"{skills}")
-        techgig_find_jobs(skills, location, date_posted, experience)
-        times_find_jobs(skills, location, date_posted, experience)
+        # print(f"{skills}")
+        #techgig_find_jobs(skills, location, date_posted, experience)
+        # times_find_jobs(skills, location, date_posted, experience)
 
-def techgig_find_jobs(skills, location, date_posted, experience):
+
     
-    url = f"https://www.techgig.com/job_search?page=1&txtKeyword={'+'.join(skills)}&cboWorkExp1={experience}&NoOfDaysSincePosted={date_posted * 7}&keyword=&txtLocation={location}"
-    print(url)
-    # print("URL : "+url)
-    print("-----TECHGIG-----")
+        url = f"https://www.techgig.com/job_search?page=1&txtKeyword={'+'.join(skills)}&cboWorkExp1={experience}&NoOfDaysSincePosted={date_posted * 7}&keyword=&txtLocation={location}"
+        print(url)
+        # print("URL : "+url)
+        print("-----TECHGIG-----")
 
-    html_text = requests.get(url)
-    soup = BeautifulSoup(html_text.text, 'lxml')
+        html_text = requests.get(url)
+        soup = BeautifulSoup(html_text.text, 'lxml')
 
-    jobs = soup.find_all('div', class_='col-md-6 col-sm-12')
-    # print(jobs)
-    for job in jobs:
-        job = job.find('div', class_='job-box-lg')
-        company = job.find('div', class_='job-header clearfix').find('div', class_='details full-width').p.text
-        title = job.find('div', class_='job-header clearfix').find('div', class_='details full-width').h3.text
-        contents = job.find('div', class_='job-content').find('dl', class_='description-list').find_all("dd")
-        more_details = job.find('div', class_='job-footer clearfix').a['href']
-        experience = contents[0].text
-        ctc = contents[1].text
-        skills = contents[2].text
-        posted = job.find('div', class_='job-footer clearfix').span.text.split()
-        posted = posted[2] + ' ' + posted[3]
-        # print(contents) # For debugging process
+        jobs = soup.find_all('div', class_='col-md-6 col-sm-12')
+        # print(jobs)
+        techgig_list = []
+        for job in jobs:
+            job = job.find('div', class_='job-box-lg')
+            company = job.find('div', class_='job-header clearfix').find('div', class_='details full-width').p.text
+            title = job.find('div', class_='job-header clearfix').find('div', class_='details full-width').h3.text
+            contents = job.find('div', class_='job-content').find('dl', class_='description-list').find_all("dd")
+            more_details = job.find('div', class_='job-footer clearfix').a['href']
+            experience = contents[0].text
+            ctc = contents[1].text
+            skills = contents[2].text
+            posted = job.find('div', class_='job-footer clearfix').span.text.split()
+            posted = posted[2] + ' ' + posted[3]
+            # print(contents) # For debugging process
 
-        print(f"Job title : {title}\nCompany Name : {company}\nExperience  : {experience}\nCTC : {ctc}\n"
-              f"Skills : {skills}\nPosted : {posted}\nMore details : {more_details}")
-        print("\n")
+            # print(f"Job title : {title}\nCompany Name : {company}\nExperience  : {experience}\nCTC : {ctc}\n"
+            #      f"Skills : {skills}\nPosted : {posted}\nMore details : {more_details}")
+            # print("\n")
+
+            techgig_dict = {}
+            techgig_dict = {"title" : title, "company" : company, "experience":experience, "ctc":ctc, 
+            "skills":skills, "posted":posted, "details":more_details}
+            techgig_list.append(techgig_dict)
+        return render_template('results.html', techgig_list = techgig_list)
+
 
 
 def times_find_jobs(skills, location, date_posted, experience):
