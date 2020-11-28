@@ -53,6 +53,7 @@ def index():
             techgig_dict = {"title" : title, "company" : company, "experience":experience, "ctc":ctc, 
             "skills":skills, "posted":posted, "details":more_details}
             techgig_list.append(techgig_dict)
+        print(techgig_list)
         return render_template('results.html', techgig_list = techgig_list)
 
 

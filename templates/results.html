@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
-      <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 
@@ -29,16 +29,17 @@
          <th>Posted on</th>
          <th>More details</th>
       </tr>
-         {% for job in techgig_list %}
+      {% for job in techgig_list %}
       <tr>
-          <td>{{techgig_list['title']}}</td>
-         <td>{{techgig_list['company']}}</td>
-         <td>{{techgig_list['experience']}}</td>
-         <td>{{techgig_list['ctc']}}</td>
-         <td>{{techgig_list['skills']}} </td>
-         <td>{{techgig_list['posted']}}</td>
-         <td>{{techgig_list['details']}}</td>
-       {% endfor %}
+          <td>{{job['title']}}</td>
+          <td>{{job['company']}}</td>
+          <td>{{job['experience']}}</td>
+          <td>{{job['ctc']}}</td>
+          <td>{{job['skills']}} </td>
+          <td>{{job['posted']}}</td>
+          <td>{{job['details']}}</td>
+      </tr>
+      {% endfor %}
    </table>
 </div>
 
