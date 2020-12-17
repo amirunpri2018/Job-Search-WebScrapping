@@ -23,7 +23,7 @@ Pandemic has been harsh for alot of people in terms of work/job. So just tried t
 
 ## :key: 
 
-####  Deployed project in Heroku
+####  Deployed project in Heroku - Link removed as project under developement. :)
 
 ## :heart: Owner
 Made with :heart:&nbsp;  by [Sahil Chachra](https://github.com/SahilChachra)
