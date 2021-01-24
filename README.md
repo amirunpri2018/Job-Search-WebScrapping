@@ -29,4 +29,4 @@ Pandemic has been harsh for alot of people in terms of work/job. So just tried t
 Made with :heart:&nbsp;  by [Sahil Chachra](https://github.com/SahilChachra)
 
 ## :eyes: License
-MIT © [Sahil Chachra](https://github.com/SahilChachra/Job-Search-WebScrapping/blob/main/LICENSE)
+Apache © [Sahil Chachra](https://github.com/SahilChachra/Job-Search-WebScrapping/blob/main/LICENSE)
